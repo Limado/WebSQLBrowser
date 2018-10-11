@@ -1,2 +1,2 @@
 # WebSQLBrowser
-Javascript / Html SQL QuerBrowser
+Javascript / Html SQL QueryBrowser
