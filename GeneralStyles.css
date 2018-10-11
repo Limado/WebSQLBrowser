@@ -1,0 +1,272 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 30px;
+  background-color: #f0f0f0;
+}
+
+.queryWriterContainer, .queryWriterBackdrop, .queryWriterTextarea {
+  width: 100%;
+  height: 100%;
+}
+
+.queryWriterHighlights, .queryWriterTextarea, .queryWriterResult {
+  padding: 10px;
+  font-size: 14px !important;
+  font-family: 'Avenir' !important;
+}
+
+.queryWriterContainer {
+  display: block;
+  margin: 0 auto;
+  transform: translateZ(0);
+  -webkit-text-size-adjust: none;
+  
+}
+
+.queryWriterBackdrop {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  margin: 0;
+  border-radius: 0;
+  border: 2px solid #A0CCEB;
+  border-left : 1px solid #A0CCEB;
+  background-color: #FCFCF0;
+  overflow: auto;
+  /*pointer-events: none;*/
+  transition: transform 1s;
+}
+.queryWriterTextarea {
+  cursor: text !important;
+  display: block;
+  position: absolute;
+  z-index: 4;
+  margin: 0;
+  border: 2px solid #A0CCEB;
+  border-bottom: 1px solid #A0CCEB;
+  border-radius: 0;
+  /*color: #000;*/
+  color: transparent;
+  cursor: context-menu;
+  background-color: transparent;
+  overflow: auto;
+  resize: none;
+  transition: transform 1s;
+}
+.queryWriterHighlights {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    /*color: transparent;*/
+    color: #000000;
+}
+.queryWriterTextarea:focus, button:focus {
+  outline: none;
+}
+
+.queryWriterResult {
+  z-index: 1;
+  margin: 0;
+  background-color: #FCFCF0;
+  border-radius: 0;
+  border: 2px solid #A0CCEB;
+  border-left : 1px solid #A0CCEB;
+  border-top: 1px solid #A0CCEB;
+  overflow: auto;
+  transition: transform 1s;
+}
+
+.keyword, .string, .comment {
+  font-size: 14px !important;
+  font-family: 'Avenir' !important;
+}
+.keyword {
+  color:#000AFF;
+}
+.functions {
+color:#FF44E9;
+}
+.storeProcedures {
+color:#7E1B01;
+}
+
+.string, 
+.string > .comment,
+.string > .comment > .keyword, 
+.string > .keyword, 
+.string > .comment > .functions, 
+.string > .functions, 
+.string > .comment > .storeProcedures, 
+.string > .storeProcedures {
+  color:#F71010 !important;
+}
+.comment, 
+.comment > .string, 
+.comment > .string > .keyword, 
+.comment > .keyword, 
+.comment > .string > .functions, 
+.comment > .functions, 
+.comment > .string > .storeProcedures, 
+.comment > .storeProcedures {
+    color:#088C1C !important;
+  }
+  .comment .string , .comment .keyword , .string .keyword {
+    background-color:transparent !important;
+  }
+
+.v-caret {
+  width:.5em;
+  height:1em;
+  border-top:1px solid #444;
+  border-bottom:1px solid #444;
+  background:linear-gradient(to right, transparent .21em, #444 .3em, transparent .29em);
+  display:inline-block;    
+  margin:-2px -.2em;
+
+}
+
+#intellisense {
+  min-height: 20px !important; 
+   max-height: 120px !important; 
+   overflow: auto;
+   min-width: 150px;
+   background-color: #F8F6E3;
+   border:solid 1px #444;
+   position: absolute;
+   border-radius: 3px;
+   padding: 2px;
+  }
+
+ #intellisenseList {
+  min-height: 20px !important; 
+  max-height: 120px !important; 
+  text-decoration: none;
+  padding: 0;
+  border-radius: 3px;
+  overflow: hidden;
+  word-wrap: normal;
+  height: 100%;
+  width: 100%;
+  background-color : #FAFAFA;
+  border: none;
+  }
+
+#intellisense option {
+  font-family: avenir;
+  font-size: 12px;
+  color: #000000 !important;
+}
+
+.optionList{
+  text-decoration: none;
+  border-radius: 3px;
+  background-color: transparent;
+  border:solid 1px #444;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: avenir;
+  font-size: 13px;
+  min-width: 150px;
+}
+
+
+.optionPanelButton {
+  width : 25px;
+  height: 25px;
+  margin: 2px;
+  padding: 4px;
+  cursor: pointer;
+  border: 1px outset #0F96F5;
+  border-radius: 4px;
+}
+.optionPanelButton:active { 
+  border: 1px inset #0F96F5;
+  background-color: #0F96F5 !important;
+}
+.optionPanelButtonActive { 
+ border: 1px inset #0F96F5 !important;
+ background-color: #0F96F5 !important;
+  
+}
+
+/** TABLA DE RESULTADOS */
+
+#queryWriterResult > table {
+  min-width: 100%;
+  height: 100%;
+  font: avenir;
+  font-size: 12px;
+  font-weight: 100;
+  margin:auto;
+  border-bottom: solid 1px rgb(28, 164, 219) !important; 
+}
+
+#queryWriterResult table > thead > tr{
+  height: 25px;
+}
+#queryWriterResult table > thead > tr > th {
+  background-color: rgb(28, 164, 219);
+  padding-left:3px;
+  color: rgb(255, 255, 255);
+}
+
+#queryWriterResult table > thead >th:first-child div{
+  border: none;
+}
+#queryWriterResult table > thead > tr > th:first-child,
+#queryWriterResult table > tbody > tr > td:first-child {
+  padding-left: 5px;
+  
+  background-color: #1CA4DB;
+  /*border-right: solid 0.5px #D8D8D8;*/
+  border-bottom: solid 0.5px #D8D8D8;
+  /*color: #444 !important;*/
+  color: rgb(255, 255, 255) !important;
+  width: 35px;
+}
+#queryWriterResult table > thead > tr > th:first-child:active,
+#queryWriterResult table > tbody > tr > td:first-child:active {
+  background-color: #E6E6E6 !important;
+  
+}
+
+#queryWriterResult table  tbody  tr:nth-child(even) {
+  background-color: rgb(242, 244, 247);
+}
+#queryWriterResult table  tbody  tr:nth-child(odd) {
+  background-color: rgb(255, 255, 255);
+}
+
+#queryWriterResult  table  tbody  tr  td {
+  border: none;
+  border-right: dotted 0.5px #D8D8D8;
+  padding-left:3px;
+  cursor: pointer !important;
+  max-width: 50px;
+  }
+ #queryWriterResult  table  tbody  tr  td > div {
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+  }
+ #queryWriterResult  table  tbody  tr  td > div:hover {
+  resize: horizontal;
+ }
+ #queryWriterResult > table > tbody > tr > td:active {
+  background-color: rgb(28, 164, 219);
+  color: rgb(242, 244, 247);
+ }
+ .Selected {
+  background-color: #73BDD8;
+  /*
+    background: -moz-linear-gradient(#A0CCEB, #1CA4DB,#A0CCEB);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #A0CCEB), color-stop(100%, #1CA4DB), color-stop(0%, #A0CCEB));
+    background: -webkit-linear-gradient(#A0CCEB, #1CA4DB,#A0CCEB);
+    background: -o-linear-gradient(#A0CCEB, #1CA4DB,#A0CCEB);
+    background: -ms-linear-gradient(#A0CCEB, #1CA4DB,#A0CCEB);
+    background: linear-gradient(#A0CCEB, #1CA4DB,#A0CCEB);
+    color: #ffffff;
+  */
+ }
